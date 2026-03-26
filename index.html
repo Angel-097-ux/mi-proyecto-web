@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Mi Galería con Flexbox</h1>
+    </header>
+    <div class="gallery">
+        <img src="img/20251027_152943.jpg" alt="Cataratas" class="foto-galeria" title= "Cataratas">
+        <img src="img/20260215_185559.jpg" alt="Arcoiris" class="foto-galeria" title= "arcoiris">
+        <img src="img/20251104_123312.jpg" alt="Playa" class="foto-galeria" title= "Playa">
+        <img src="img/20251101_165904.jpg" alt="Jangada" class="foto-galeria" title="Jangada">
+        <img src="img/20260201_201339.jpg" alt="Atardecer" class="foto-galeria" title="Atardecer">
+        <img src="img/20260214_190228.jpg" alt="Caballos" class="foto-galeria" title="Caballos">
+    </div>
+
+    <script>
+        // 1. Seleccionamos todas las imágenes con la clase foto-galeria
+        const imagenes = document.querySelectorAll('.foto-galeria');
+
+        // 2. Agregamos el evento de clic a cada una
+        imagenes.forEach(img => {
+            img.addEventListener('click', function() {
+                // 3. Obtenemos el nombre desde el atributo 'alt'
+                const nombreProducto = this.getAttribute('alt');
+                // 4. Mostramos el mensaje
+                alert("Has seleccionado: " + nombreProducto);
+            });
+        });
+    </script>
+</body>
+</html>
