@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery</title>
+    <title>Mi Proyecto Web</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Mi Galería con Flexbox</h1>
-    </header>
+
+    <h1>Mi Galería con Flexbox</h1>
+
     <div class="gallery">
-        <img src="img/20251027_152943.jpg" alt="Cataratas del iguazú" class="foto-galeria" title= "Cataratas">
-        <img src="img/20260215_185559.jpg" alt="Arcoiris en ruta" class="foto-galeria" title= "arcoiris">
-        <img src="img/20251104_123312.jpg" alt="Playa Brasil" class="foto-galeria" title= "Playa">
-        <img src="img/20251101_165904.jpg" alt="Jangada en muro alto" class="foto-galeria" title="Jangada">
-        <img src="img/20260201_201339.jpg" alt="Atardecer cordobés" class="foto-galeria" title="Atardecer">
-        <img src="img/20260214_190228.jpg" alt="Preparando cabalgata" class="foto-galeria" title="Caballos">
+        <img src="img/20251027_152943.jpg" alt="Cataratas del Iguazú">
+        <img src="img/20260215_185559.jpg" alt="Arcoiris en ruta">
+        <img src="img/20251104_123312.jpg" alt="Playa Brasil">
+        <img src="img/20251101_165904.jpg" alt="Jangada en muro alto">
+        <img src="img/20260201_201339.jpg" alt="Atardecer cordobés">
+        <img src="img/20260214_190228.jpg" alt="Preparando cabalgata">
+    </div>
+
+    <div id="miModal" class="modal">
+        <span class="cerrar">&times;</span>
+        <img class="modal-contenido" id="img01">
+        <div id="caption"></div>
     </div>
 
     <script>
-        // 1. Seleccionamos todas las imágenes con la clase foto-galeria
-        const imagenes = document.querySelectorAll('.foto-galeria');
+        const modal = document.getElementById("miModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        const span = document.getElementsByClassName("cerrar")[0];
 
-        // 2. Agregamos el evento de clic a cada una
-        imagenes.forEach(img => {
-            img.addEventListener('click', function() {
-                // 3. Obtenemos el nombre desde el atributo 'alt'
-                const nombreProducto = this.getAttribute('alt');
-                // 4. Mostramos el mensaje
-                alert("Has seleccionado: " + nombreProducto);
-            });
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
         });
+
+        // Cerrar al hacer clic en la X o en el fondo oscuro
+        modal.onclick = function() {
+            modal.style.display = "none";
+        }
     </script>
 </body>
 </html>
